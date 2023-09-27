@@ -1,8 +1,11 @@
 package com.account.jpaInheritance.model.entities;
 
+import com.account.jpaInheritance.model.entities.accounts.Accounts;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +18,8 @@ public class Person implements Serializable {
     private String lastName;
     private String email;
     private Integer age;
+    @OneToMany(mappedBy = "person")
+    private List<Accounts> accountList;
 
     public Person(){}
 
@@ -64,6 +69,10 @@ public class Person implements Serializable {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public List<Accounts> getAccountList() {
+        return accountList;
     }
 
     @Override
