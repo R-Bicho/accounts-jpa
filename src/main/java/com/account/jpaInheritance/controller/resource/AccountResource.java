@@ -50,4 +50,20 @@ public class AccountResource {
         Accounts accounts = accountService.update(id, obj);
         return ResponseEntity.ok().body(accounts);
     }
+
+    @PutMapping(value = "/deposit/{id}/{amount}")
+    public ResponseEntity<Accounts> deposit(@PathVariable Long id,
+                                            @PathVariable Double amount)
+    {
+        Accounts ac = accountService.deposit(id, amount);
+        return ResponseEntity.ok().body(ac);
+    }
+
+    @PutMapping(value = "/withdraw/{id}/{amount}")
+    public ResponseEntity<Accounts> withdraw(@PathVariable Long id,
+                                            @PathVariable Double amount)
+    {
+        Accounts ac = accountService.withdraw(id, amount);
+        return ResponseEntity.ok().body(ac);
+    }
 }

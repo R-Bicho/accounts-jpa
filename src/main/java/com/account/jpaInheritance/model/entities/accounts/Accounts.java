@@ -19,7 +19,7 @@ public abstract class Accounts implements Serializable {
     private Long id;
     private Integer agency;
     private Integer numberAccount;
-    private Double balance;
+    protected Double balance;
     @ManyToOne
     @JoinColumn(name = "person_account")
     @JsonIgnore

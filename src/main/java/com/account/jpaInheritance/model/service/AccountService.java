@@ -47,4 +47,18 @@ public class AccountService {
         entity.setNumberAccount(obj.getNumberAccount());
     }
 
+    public Accounts deposit(Long id, Double amount)
+    {
+        Accounts entity = accountRepository.getReferenceById(id);
+        entity.deposit(amount);
+        return accountRepository.save(entity);
+    }
+
+    public Accounts withdraw(Long id, Double amount)
+    {
+        Accounts entity = accountRepository.getReferenceById(id);
+        entity.withdraw(amount);
+        return accountRepository.save(entity);
+    }
+
 }

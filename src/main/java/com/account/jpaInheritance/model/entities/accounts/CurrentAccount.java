@@ -28,11 +28,14 @@ public class CurrentAccount extends Accounts implements Serializable {
 
     @Override
     public void deposit(Double amount) {
-
+        this.balance += amount;
     }
 
     @Override
     public void withdraw(Double amount) {
-
+        if(balance + limit > amount)
+        {
+            this.balance -= amount;
+        }
     }
 }

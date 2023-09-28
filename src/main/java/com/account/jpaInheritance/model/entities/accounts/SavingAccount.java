@@ -18,11 +18,11 @@ public class SavingAccount extends Accounts implements Serializable {
 
     @Override
     public void deposit(Double amount) {
-
+        this.balance += amount;
     }
 
     @Override
     public void withdraw(Double amount) {
-
+        this.balance -= amount;
     }
 }
