@@ -1,7 +1,9 @@
 package com.account.jpaInheritance.model.entities.accounts;
 
+import com.account.jpaInheritance.controller.deserialize.AccountDeserialize;
 import com.account.jpaInheritance.model.entities.Person;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -10,6 +12,7 @@ import java.util.Objects;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "Type_account")
+@JsonDeserialize(using = AccountDeserialize.class)
 public abstract class Accounts implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

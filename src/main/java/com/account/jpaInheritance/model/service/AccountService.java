@@ -1,5 +1,6 @@
 package com.account.jpaInheritance.model.service;
 
+import com.account.jpaInheritance.model.entities.Person;
 import com.account.jpaInheritance.model.entities.accounts.Accounts;
 import com.account.jpaInheritance.model.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,29 @@ public class AccountService {
     public Optional<Accounts> findById(Long id)
     {
         return accountRepository.findById(id);
+    }
+
+    public Accounts insert(Accounts obj)
+    {
+        return accountRepository.save(obj);
+    }
+
+    public void deleteById(Long id)
+    {
+        accountRepository.deleteById(id);
+    }
+
+    public Accounts update(Long id, Accounts obj)
+    {
+        Accounts entity = accountRepository.getReferenceById(id);
+        updateData(entity, obj);
+        return accountRepository.save(entity);
+    }
+
+    private void updateData(Accounts entity, Accounts obj)
+    {
+        entity.setAgency(obj.getAgency());
+        entity.setNumberAccount(obj.getNumberAccount());
     }
 
 }
